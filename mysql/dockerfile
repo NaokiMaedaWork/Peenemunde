@@ -1,0 +1,2 @@
+#M1(ARM)ではイメージがないのでlinux/amd64を指定 
+FROM --platform=linux/amd64 mysql:8.0.26 AS mysql_build

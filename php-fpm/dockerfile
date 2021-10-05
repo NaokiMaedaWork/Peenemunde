@@ -1,0 +1,27 @@
+FROM php:7.4-fpm
+
+# # ホストのphp.iniに置き換え
+# php -r "echo phpinfo();" | grep "php.ini"
+COPY ./php.ini /usr/local/etc/php/
+
+#  インストール
+RUN apt-get update && apt-get install -y \
+        vim \
+        wget \
+        unzip \
+        git \
+    && \
+    docker-php-ext-install pdo_mysql
+
+RUN pecl install xdebug
+
+RUN docker-php-ext-enable xdebug
+
+# Composer インストール
+RUN curl https://getcomposer.org/installer | php \ 
+    && mv composer.phar /usr/local/bin/composer
+
+RUN apt-get update && apt-get install -y nodejs npm
+
+# Laravel 起動
+# RUN cd blog-app
