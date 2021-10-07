@@ -8,6 +8,10 @@ use Inertia\Inertia;
 
 class TopController extends Controller
 {
+    // 定数
+    const ARTICLE_NUM = 4; 
+
+    // 依存関係
     protected $article;
 
     public function __construct(Article $article)
@@ -21,8 +25,17 @@ class TopController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Top', [
-            'articles' => $this->article->getAll(),
+        return Inertia::render('top/Index', [
+            'articles' => $this->article->getByNum(self::ARTICLE_NUM),
         ]);
+    }
+    /**
+     * 追加で記事を取得する
+     *
+     * @return JSON
+     */
+    public function seeMore($num)
+    {
+        return $this->article->getByNum($num);
     }
 }

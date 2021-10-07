@@ -18,7 +18,6 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-
-
 Route::get('/top', [TopController::class, 'index']);
+Route::get('/top/seeMore/{articleNum}', [TopController::class, 'seeMore']);
 
