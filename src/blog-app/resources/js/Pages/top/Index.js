@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import Header from './common/Header';
-import Carousel from './top/Carousel';
-import Item from './top/Item';
-import Card from './top/Card';
-import Footer from './common/Footer';
+import Header from '../common/Header';
+import Carousel from './Carousel';
+import Item from './Item';
+import Card from './Card';
+import Footer from '../common/Footer';
 
 
 const Top = ({ articles }) => {
